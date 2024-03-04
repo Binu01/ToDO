@@ -33,7 +33,6 @@ dependencies:
   firebase_core: ^2.25.5
   flutter:
     sdk: flutter
-  fluttertoast: ^8.2.4
   image_picker: ^1.0.7
   random_string: ^2.3.1
 

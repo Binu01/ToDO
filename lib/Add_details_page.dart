@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:random_string/random_string.dart';
 import 'package:todo_app/functions/fns.dart';
 
@@ -13,6 +12,12 @@ class Add extends StatefulWidget {
 
 class _AddState extends State<Add> {
 
+
+   final SnackBar _bar = SnackBar(
+    content: Text("Details successflly Added"),
+    duration:Duration(seconds: 3),
+   );
+
   TextEditingController _agectrl = TextEditingController();
   TextEditingController _namectrl = TextEditingController();
 
@@ -25,15 +30,16 @@ class _AddState extends State<Add> {
     };
     await Methods().addDetails(detailsInfoMap, Id)
         .then((value) {
-      Fluttertoast.showToast(
-          msg: "Employee details has been uploaded successfully",
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0
-      );
+
+      // Fluttertoast.showToast(
+      //     msg: "Employee details has been uploaded successfully",
+      //     toastLength: Toast.LENGTH_LONG,
+      //     gravity: ToastGravity.CENTER,
+      //     timeInSecForIosWeb: 1,
+      //     backgroundColor: Colors.red,
+      //     textColor: Colors.white,
+      //     fontSize: 16.0
+      // );
     }
     );
 
@@ -93,6 +99,7 @@ class _AddState extends State<Add> {
                     ),
                     onPressed: () {
                       Submitdetails();
+                        ScaffoldMessenger.of(context).showSnackBar(_bar);
                       Navigator.pop(context);
                     },
                     child: Text("Add", style: TextStyle(
